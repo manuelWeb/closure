@@ -1,24 +1,42 @@
 // Place JS here.
-var creatBtn = function(lab) {
-  var btn = document.createElement("BUTTON");
-  btn.appendChild(document.createTextNode(lab));
-  document.body.appendChild(btn);
-  return btn;
-};
+// IEF globale
+(function() {
 
-var villes = ["villeneuve d'ascq", "lille", "cysoing", "Anstaing"];
+  var villes = ["villeneuve d'ascq", "lille", "cysoing", "Anstaing"];
 
-var memoVille = function(index_ary) {
-  return function() {
-    console.log('Votre ville est : ', villes[index_ary]);
+  var cpt = function(index) {
+    console.log("valeur de index outer closure: ", index); // valeur de index outer
+    return function() {
+      console.log(
+        `valeur de index inner closure: ${index}`,
+        `ville[${index}]: ${villes[index]}` // valeur de  index inner
+      );
+    };
   };
-};
+  for (var j = 0; j < villes.length; j++) {
+    var milleSec = 1000 * j;
+    setTimeout(cpt(j), milleSec);
+  }
+  // création btn + evt => console.log(memoVille(i))
+  var creatBtn = function(lab) {
+    var btn = document.createElement("BUTTON");
+    btn.appendChild(document.createTextNode(lab));
+    document.body.appendChild(btn);
+    return btn;
+  };
 
-for (var i = 0; i < villes.length; i++) {
-  var btn = creatBtn(villes[i]);
-  var logVilleMemo = memoVille(i);
-  btn.onclick = logVilleMemo; // attention pas de () car la fct s'exe au click
-}
+  var memoVille = function(index_ary) {
+    return function() {
+      console.log('Votre ville est : ', villes[index_ary]);
+    };
+  };
+
+  for (var i = 0; i < villes.length; i++) {
+    var btn = creatBtn(villes[i]);
+    var logVilleMemo = memoVille(i);
+    btn.onclick = logVilleMemo; // attention pas de () car la fct s'exe au click
+  }
+})();
 
 // cas setTimeout sans closure
 /*
@@ -35,7 +53,6 @@ for (var i = 0; i <= 3; i++) {
 */
 
 // avec closure (vers longue) pour memoriser cpt dans memoSec
-//
 // memorisation du contexte i de la bcl for transmi par arg cpt de la <= memoSec
 /*
 var memoSec = function (cpt) {
@@ -67,18 +84,3 @@ for (var i = 0; i < villes.length; i++) {
   })(i), milleSec);
 }
 */
-
-// IEF en dehors de la boucle
-var cpt = function(index) {
-  console.log("valeur de index outer: ", index); // valeur de index outer
-  return function() {
-    console.log(
-      "valeur de index inner ief: ${index} ",
-      `ville[${index}]: ${villes[index]}` // valeur de  index inner
-    ); 
-  };
-};
-for (var i = 0; i < villes.length; i++) {
-  var milleSec = 1000 * i;
-  setTimeout(cpt(i), milleSec);
-}
