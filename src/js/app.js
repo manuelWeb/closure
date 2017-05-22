@@ -1,7 +1,19 @@
 // Place JS here.
 // IEF globale
 (function() {
+  var ary = ["un","deux","trois","quatre"];
+	var memoAry = function(index){
+		return function(){
+			console.log(ary[index])
+		}
+	};
+	for(var i = 0; i<ary.length; i++){
+		var sec = 3000 * i;
+		console.log(`${sec/1000} sec pour la bcl n°${i}`)
+		setTimeout(memoAry(i),sec)
+	}
 
+	// ^ vérifier solution sec*i dans la boucle for
   var villes = ["villeneuve d'ascq", "lille", "cysoing", "Anstaing"];
 
   var cpt = function(index) {
