@@ -1,6 +1,18 @@
 // Place JS here.
 // IEF globale
 (function() {
+	// bonjour dans 3sec
+	function wait(message) {
+		setTimeout(
+			function timer(){
+				// console.log( message );
+				var div = document.createElement('DIV');
+				div.appendChild(document.createTextNode(message));
+				document.body.appendChild(div);
+		},3000);
+	}
+	wait("Hello Closure!");
+	//
   var ary = ["un","deux","trois","quatre"];
 	var memoAry = function(index){
 		return function(){

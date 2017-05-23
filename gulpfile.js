@@ -17,7 +17,7 @@ gulp.task('serve', ['sass', 'js'], function() {
     browserSync.init({
         server: './',
         // browser: "google chrome canary"
-        browser: "Firefox"
+        // browser: "Firefox"
     });
 
     gulp.watch('src/scss/**/*.scss', ['sass']);
