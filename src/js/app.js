@@ -1,6 +1,14 @@
 // Place JS here.
 // IEF globale
 (function() {
+  var i;
+  i = i || `i outer n'est pas définie : typeof i // ${i}`;
+  for(let i = 1; i <= 5; i++) {
+     setTimeout(function() {
+         console.info('Value of i inner : ' + i); 
+     },1000*i);
+  }
+  console.info(`var i outer : ${i}`);
 	// bonjour dans 3sec
 	function wait(message) {
 		setTimeout(
