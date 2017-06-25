@@ -20,6 +20,7 @@
 		},3000);
 	}
 	wait("Hello Closure!");
+  console.dir(wait)
 	//
   var ary = ["un","deux","trois","quatre"];
 	var memoAry = function(index){

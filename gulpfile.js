@@ -40,8 +40,8 @@ gulp.task('sass', function () {
 gulp.task('js', function() {
   return gulp.src('src/js/**/*.js')
     .pipe(babel())
-    .pipe(uglify())
-    .pipe(concat('app.js'))
+    // .pipe(uglify())
+    // .pipe(concat('app.js'))
     .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest('dist/js'))
     .pipe(browserSync.stream());
