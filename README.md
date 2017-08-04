@@ -3,3 +3,6 @@
 
 #### explications supp closures
 [ mdn mozilla ]( https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Fonctions#Fermetures_&#40;closures&#41; )
+
+#### modules ST
+- utiliser google closure template snippets
